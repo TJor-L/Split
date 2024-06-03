@@ -1,0 +1,54 @@
+# Node.js 忽略的文件和目录
+
+# Node modules
+node_modules/
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 环境变量文件
+.env
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器文件
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+yarn.lock
+
+# 编译输出
+dist/
+build/
+
+# 缓存
+.cache/
+
+# 临时文件
+tmp/
+temp/
+
+# 覆盖率输出
+coverage/
+
+# PM2 进程管理器文件
+.pids/
+
+
+data/
+
+.circleci/
+.gitlab-ci.yml
+.travis.yml
+
+
+logs/
+*.log
