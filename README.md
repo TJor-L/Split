@@ -11,6 +11,7 @@
 # 👥 Participants
 
 > - Dijkstra Liu: Full-stack + Product Manager
+> - Weilong Guan: Backend
 
 ---
 
