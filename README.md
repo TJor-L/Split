@@ -12,7 +12,7 @@
 
 > - Dijkstra Liu: Full-stack + Product Manager
 > - Weilong Guan: Backend
-
+> - Ningyue Liang: Back-end + DB
 ---
 
 # 💭 **Requirements Specification**
