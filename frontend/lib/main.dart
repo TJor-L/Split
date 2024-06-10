@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Bottom Navigation',
-      theme: ThemeData(
+      theme: ThemeData(    // 整体theme的参数
         primarySwatch: Colors.grey,
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,
@@ -22,25 +22,25 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
         ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(  // 底部导航栏的theme参数
           backgroundColor: Colors.white,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
         ),
       ),
-      home: MainScreen(),
+      home: MainScreen(), // 主屏幕
     );
   }
 }
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatefulWidget {    // 主屏幕， stateful widget， 用于切换不同的屏幕
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> {    // 渲染主屏幕的state
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[    //主屏幕的所有页面
     HomeScreen(),
     GroupScreen(),
     ScanScreen(),
