@@ -12,7 +12,9 @@
 
 > - Dijkstra Liu: Full-stack + Product Manager
 > - Weilong Guan: Backend
-
+> - Ningyue Liang: Back-end + DB
+> - Yijia Chen: Frontend
+> - Zheng Fang: Frontend
 ---
 
 # 💭 **Requirements Specification**
