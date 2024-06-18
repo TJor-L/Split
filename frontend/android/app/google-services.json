@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "99080311871",
+    "project_id": "splitauth-c6d09",
+    "storage_bucket": "splitauth-c6d09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99080311871:android:c141e6203b9e2427f3148a",
+        "android_client_info": {
+          "package_name": "com.split"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "99080311871-smh7hop8l76ntog9rsei2fsrge6k3b1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.split",
+            "certificate_hash": "12f16d828f50a4192e5d056843c86371dc6c9abf"
+          }
+        },
+        {
+          "client_id": "99080311871-hjlh7bsdfn07rsi7tri53qtab4i57c52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWpxdm2SmqL0sn_sAiPoInCQMqXYJjwLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99080311871-hjlh7bsdfn07rsi7tri53qtab4i57c52.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "99080311871-k162hn0b5f7ekodtehlr9o3ddf1ns1vi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.frontend"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/screens/login.dart';
 import 'screens/home.dart';
 import 'screens/groups.dart';
 import 'screens/scan.dart';
 import 'screens/notification.dart';
 import 'screens/profile.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -14,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Bottom Navigation',
-      theme: ThemeData(    // 整体theme的参数
+      theme: ThemeData(
+        // 整体theme的参数
         primarySwatch: Colors.grey,
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,
@@ -22,7 +30,8 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
         ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(  // 底部导航栏的theme参数
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          // 底部导航栏的theme参数
           backgroundColor: Colors.white,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey,
@@ -33,15 +42,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainScreen extends StatefulWidget {    // 主屏幕， stateful widget， 用于切换不同的屏幕
+class MainScreen extends StatefulWidget {
+  // 主屏幕， stateful widget， 用于切换不同的屏幕
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {    // 渲染主屏幕的state
+class _MainScreenState extends State<MainScreen> {
+  // 渲染主屏幕的state
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[    //主屏幕的所有页面
-    HomeScreen(),
+  static List<Widget> _widgetOptions = <Widget>[
+    //主屏幕的所有页面
+    GoogleButton(),
     GroupScreen(),
     ScanScreen(),
     NotificationScreen(),
@@ -63,7 +75,8 @@ class _MainScreenState extends State<MainScreen> {    // 渲染主屏幕的state
           _buildBottomNavigationBarItem(Icons.home, 'Home', 0),
           _buildBottomNavigationBarItem(Icons.group, 'Groups', 1),
           _buildBottomNavigationBarItem(Icons.qr_code_scanner, 'Scan', 2),
-          _buildBottomNavigationBarItem(Icons.notifications, 'Notifications', 3),
+          _buildBottomNavigationBarItem(
+              Icons.notifications, 'Notifications', 3),
           _buildBottomNavigationBarItem(Icons.person, 'Profile', 4),
         ],
         currentIndex: _selectedIndex,
@@ -78,7 +91,8 @@ class _MainScreenState extends State<MainScreen> {    // 渲染主屏幕的state
     );
   }
 
-  BottomNavigationBarItem _buildBottomNavigationBarItem(IconData icon, String label, int index) {
+  BottomNavigationBarItem _buildBottomNavigationBarItem(
+      IconData icon, String label, int index) {
     bool isSelected = _selectedIndex == index;
     return BottomNavigationBarItem(
       icon: Container(
