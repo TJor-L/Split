@@ -16,7 +16,9 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class Split extends StatelessWidget {
+  const Split({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
         brightness: Brightness.light,
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           color: Colors.white,
           iconTheme: IconThemeData(color: Colors.black),
         ),
@@ -43,7 +45,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MainScreen extends StatefulWidget {
-  // 主屏幕， stateful widget， 用于切换不同的屏幕
+
+  const MainScreen({super.key});
+    // 主屏幕， stateful widget， 用于切换不同的屏幕
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -53,7 +57,8 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     //主屏幕的所有页面
-    GoogleButton(),
+    GoogleButton(),  //主屏幕的所有页面
+    HomeScreen(),
     GroupScreen(),
     ScanScreen(),
     NotificationScreen(),
@@ -72,11 +77,10 @@ class _MainScreenState extends State<MainScreen> {
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
-          _buildBottomNavigationBarItem(Icons.home, 'Home', 0),
+          _buildBottomNavigationBarSvgItem('assets/icons/home.svg', 'Home', 0),
           _buildBottomNavigationBarItem(Icons.group, 'Groups', 1),
-          _buildBottomNavigationBarItem(Icons.qr_code_scanner, 'Scan', 2),
-          _buildBottomNavigationBarItem(
-              Icons.notifications, 'Notifications', 3),
+          _buildBottomNavigationBarSvgItem('assets/icons/scan.svg', 'Scan', 2),
+          _buildBottomNavigationBarItem(Icons.notifications, 'Notifications', 3),
           _buildBottomNavigationBarItem(Icons.person, 'Profile', 4),
         ],
         currentIndex: _selectedIndex,
@@ -100,7 +104,7 @@ class _MainScreenState extends State<MainScreen> {
           color: isSelected ? Colors.grey[300] : Colors.transparent,
           borderRadius: BorderRadius.circular(8.0),
         ),
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Icon(
           icon,
           color: isSelected ? Colors.black : Colors.grey,
@@ -109,4 +113,17 @@ class _MainScreenState extends State<MainScreen> {
       label: label,
     );
   }
+
+  BottomNavigationBarItem _buildBottomNavigationBarSvgItem(String assetName, String label, int index) {
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        assetName,
+        width: 24,
+        height: 24,
+        color: _selectedIndex == index ? Colors.black : Colors.grey,
+      ),
+      label: label,
+    );
+  }
+
 }
