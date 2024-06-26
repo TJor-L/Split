@@ -7,7 +7,7 @@ router.post('/', function(req, res, next) {
   // Connect to MongoDB.
   const MongoClient = require('mongodb').MongoClient;
   const uri = process.env.MONGODB_URI;
-  const client = new MongoClient(uri, { useNewUrlParser: true });
+  const client = new MongoClient(uri, {});
   async function run() {
     try {
       await client.connect();
@@ -26,4 +26,7 @@ router.post('/', function(req, res, next) {
       await client.close();
     }
   }
+  run().catch(console.dir);
 });
+
+module.exports = router;
