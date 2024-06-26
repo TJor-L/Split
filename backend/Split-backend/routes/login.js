@@ -5,12 +5,19 @@ var router = express.Router();
 /* GET login page. */
 router.post('/', function(req, res, next) {
   // Connect to MongoDB.
-  const MongoClient = require('mongodb').MongoClient;
+  const { MongoClient, ServerApiVersion } = require('mongodb');
   const uri = process.env.MONGODB_URI;
-  const client = new MongoClient(uri, {});
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
   async function run() {
     try {
       await client.connect();
+      console.log("Connected to the database.");
       const database = client.db('test');
       const collection = database.collection('users');
       const query = { user_id: req.body.user_id };
