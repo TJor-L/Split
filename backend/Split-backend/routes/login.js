@@ -22,13 +22,11 @@ router.post('/', function(req, res, next) {
       const collection = database.collection('users');
       const query = { user_id: req.body.user_id };
       const user = await collection.findOne(query);
-      if (user) {
-        // Redirect to the user profile page.
-      } else {
+      if (!user) {
         const query = { user_id: req.body.user_id, display_name: req.body.display_name, email: req.body.email };
         const user = await collection.insertOne(query);
-        // Redirect to the user profile page.
       }
+      // Redirect to the user profile page.
     } finally {
       await client.close();
     }

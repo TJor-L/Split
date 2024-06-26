@@ -1,8 +1,5 @@
 # Node.js 忽略的文件和目录
 
-# Google密钥
-google_credentials.json
-
 # Node modules
 node_modules/
 
