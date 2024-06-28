@@ -5,15 +5,16 @@ import 'screens/groups.dart';
 import 'screens/scan.dart';
 import 'screens/notification.dart';
 import 'screens/profile.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(MyApp());
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+  runApp(const Split());
 }
 
 class Split extends StatelessWidget {
@@ -55,7 +56,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   // 渲染主屏幕的state
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     //主屏幕的所有页面
     GoogleButton(),  //主屏幕的所有页面
     HomeScreen(),
