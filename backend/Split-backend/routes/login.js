@@ -20,16 +20,19 @@ router.post('/', function(req, res, next) {
       console.log("Connected to the database.");
       const database = client.db('test');
       const collection = database.collection('users');
-      const query = { user_id: req.body.user_id };
-      const user = await collection.findOne(query);
+      const user = await collection.findOne({ user_id: req.body.user_id });
       if (!user) {
+        console.log("User not found. Creating new user.")
         const query = { user_id: req.body.user_id, display_name: req.body.display_name, email: req.body.email };
         const user = await collection.insertOne(query);
       }
       // Redirect to the user profile page.
+    } catch (e) {
+      // Process the login error.
+      console.error(e);
     } finally {
+      console.log("Closing the database connection.");
       await client.close();
-      // Process a login error.
     }
   }
   run().catch(console.dir);
