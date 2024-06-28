@@ -29,6 +29,7 @@ router.post('/', function(req, res, next) {
       // Redirect to the user profile page.
     } finally {
       await client.close();
+      // Process a login error.
     }
   }
   run().catch(console.dir);
