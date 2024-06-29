@@ -18,13 +18,13 @@ Future<Response> sendPost(String url, String json_body) async {
 }
 
 Future<SplitUser> createUser(
-  String user_id,
-  String display_name,
+  String userId,
+  String displayName,
   String email,
 ) async {
   String jsonBody = jsonEncode(<String, String>{
-    'user_id': user_id,
-    'display_name': display_name,
+    'user_id': userId,
+    'display_name': displayName,
     'email': email,
   });
   final response =
@@ -33,36 +33,35 @@ Future<SplitUser> createUser(
   if (response.statusCode == 201) {
     // If the server did return a 201 CREATED response,
     // then parse the JSON.
+    print(response.body);
     return SplitUser.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>);
   } else {
     // If the server did not return a 201 CREATED response,
     // then throw an exception.
-    throw Exception('Failed to create album.');
+    throw Exception('Failed to create user.');
   }
 }
 
 class SplitUser {
-  final String user_id;
-  final String display_name;
+  final String userId;
+  final String displayName;
   final String email;
 
   const SplitUser(
-      {required this.user_id, required this.display_name, required this.email});
+      {required this.userId, required this.displayName, required this.email});
 
-  factory SplitUser.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'user_id': String user_id,
-        'display_name': String display_name,
-        'email': String email,
-      } =>
-        SplitUser(
-          user_id: user_id,
-          display_name: display_name,
-          email: email,
-        ),
-      _ => throw const FormatException('Failed to load album.'),
-    };
-  }
+  factory SplitUser.fromJson(Map<String, dynamic> json) => switch (json) {
+        {
+          'user_id': String userId,
+          'display_name': String displayName,
+          'email': String email,
+        } =>
+          SplitUser(
+            userId: userId,
+            displayName: displayName,
+            email: email,
+          ),
+        _ => throw FormatException('Failed to load SplitUser.'),
+      };
 }

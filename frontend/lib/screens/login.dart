@@ -34,7 +34,7 @@ class GoogleButton extends StatelessWidget {
             if (displayName != null && email != null) {
               SplitUser currentUser =
                   await createUser(userId, displayName, email);
-              print(currentUser.user_id); //test printing returned user name
+              print(currentUser.userId); //test printing returned user name
             } else {
               print('Sign-in failed. User name or email is Null!');
               return null;
